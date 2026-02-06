@@ -85,7 +85,7 @@ class _CustomButtonState extends State<CustomButton> {
                       colorFilter: ColorFilter.mode(
                         widget.isSecondary
                             ? AppColors.brandPrimary
-                            : AppColors.textDisabled,
+                            : AppColors.offWhite,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -96,7 +96,7 @@ class _CustomButtonState extends State<CustomButton> {
                       fontSize: widget.fontSize,
                       color: widget.isSecondary
                           ? AppColors.brandPrimary
-                          : Color(0xff_f8f2ef),
+                          : AppColors.offWhite,
                     ),
                   ),
                   if (widget.trailing != null)
