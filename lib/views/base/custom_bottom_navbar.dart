@@ -13,19 +13,17 @@ class CustomBottomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
+        padding: const EdgeInsets.only(bottom: 8.0, left: 20, right: 20),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
             color: Get.find<ThemeController>().darkTheme
                 ? AppColors.darkBackground
                 : Color(0xff_faf9f7),
-            border: Border(
-              top: BorderSide(
-                color: Get.find<ThemeController>().darkTheme
-                    ? Color(0xff_6B6B6F)
-                    : AppColors.borderDivider,
-              ),
+            border: Border.all(
+              color: Get.find<ThemeController>().darkTheme
+                  ? Color(0xff_6B6B6F)
+                  : AppColors.borderDivider,
             ),
             borderRadius: BorderRadius.all(Radius.circular(999)),
           ),
