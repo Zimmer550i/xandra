@@ -11,34 +11,29 @@ class CustomBottomNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0, left: 20, right: 20),
-        child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Get.find<ThemeController>().darkTheme
-                ? AppColors.darkBackground
-                : Color(0xff_faf9f7),
-            border: Border.all(
-              color: Get.find<ThemeController>().darkTheme
-                  ? Color(0xff_6B6B6F)
-                  : AppColors.borderDivider,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(999)),
-          ),
-          child: Row(
-            children: [
-              const SizedBox(width: 4),
-              item("Home", "home", 0),
-              item("Try On", "try_on", 1),
-              item("Explore", "logo", 2, false),
-              item("Cart", "cart", 3),
-              item("Profile", "profile", 4),
-              const SizedBox(width: 4),
-            ],
-          ),
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Get.find<ThemeController>().darkTheme
+            ? AppColors.darkBackground
+            : Color(0xff_faf9f7),
+        border: Border.all(
+          color: Get.find<ThemeController>().darkTheme
+              ? Color(0xff_6B6B6F)
+              : AppColors.borderDivider,
         ),
+        borderRadius: BorderRadius.all(Radius.circular(999)),
+      ),
+      child: Row(
+        children: [
+          const SizedBox(width: 4),
+          item("Home", "home", 0),
+          item("Try On", "try_on", 1),
+          item("Explore", "logo", 2, false),
+          item("Cart", "cart", 3),
+          item("Profile", "profile", 4),
+          const SizedBox(width: 4),
+        ],
       ),
     );
   }

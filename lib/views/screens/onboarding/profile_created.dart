@@ -3,17 +3,15 @@ import 'package:get/get.dart';
 import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
+import 'package:xandra/views/screens/app.dart';
 import 'package:xandra/views/base/custom_button.dart';
 import 'package:xandra/views/base/profile_picture.dart';
-import 'package:xandra/views/screens/auth/splash.dart';
 
 class ProfileCreated extends StatelessWidget {
   const ProfileCreated({super.key});
 
   onSubmit() async {
-    Get.find<ThemeController>().toggleTheme();
-    await Future.delayed(Duration(milliseconds: 500));
-    Get.offAll(() => Splash());
+    Get.to(() => App(), routeName: "/app");
   }
 
   @override

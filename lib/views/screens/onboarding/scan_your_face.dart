@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/views/base/custom_button.dart';
+import 'package:xandra/views/screens/app.dart';
 import 'package:xandra/views/screens/onboarding/analyzing.dart';
 
 class ScanYourFace extends StatelessWidget {
@@ -95,7 +96,7 @@ class ScanYourFace extends StatelessWidget {
                   const SizedBox(height: 18),
                   GestureDetector(
                     onTap: () {
-                      // TODO: Add goto App route
+                      Get.to(() => App(), routeName: "/app");
                     },
                     child: Text(
                       "Skip for now",
