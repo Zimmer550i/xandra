@@ -26,6 +26,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? AppColors.darkBackground
           : AppColors.offWhite,
       automaticallyImplyLeading: false,
+      surfaceTintColor: AppColors.brandPrimary,
       titleSpacing: 0,
       title: SizedBox(
         height: kToolbarHeight,

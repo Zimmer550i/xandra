@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xandra/utils/app_colors.dart';
 
 class CustomCheckBox extends StatefulWidget {
   final bool value;
@@ -12,10 +13,10 @@ class CustomCheckBox extends StatefulWidget {
     super.key,
     required this.value,
     required this.onChanged,
-    this.activeColor = Colors.blue,
-    this.inactiveColor = Colors.grey,
-    this.size = 28.0,
-    this.borderRadius = const BorderRadius.all(Radius.circular(6)),
+    this.activeColor = AppColors.brandPrimary,
+    this.inactiveColor = AppColors.textSecondary,
+    this.size = 24.0,
+    this.borderRadius = const BorderRadius.all(Radius.circular(699)),
   });
 
   @override

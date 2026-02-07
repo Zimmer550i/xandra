@@ -6,6 +6,7 @@ import 'package:xandra/utils/app_texts.dart';
 
 class CustomTextField extends StatefulWidget {
   final String? title;
+  final bool isOptional;
   final String? hintText;
   final String? errorText;
   final String? leading;
@@ -26,6 +27,7 @@ class CustomTextField extends StatefulWidget {
     this.leading,
     this.trailing,
     this.isPassword = false,
+    this.isOptional = false,
     this.isDisabled = false,
     this.radius = 99,
     this.lines = 1,
@@ -71,15 +73,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
         if (widget.title != null)
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(
-              widget.title!,
-              style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 16,
-                // fontWeight: FontWeight.w500,
-                fontVariations: [FontVariation("wght", 500)],
-                height: 1.5,
-              ),
+            child: Row(
+              spacing: 8,
+              children: [
+                Text(
+                  widget.title!,
+                  style: TextStyle(
+                    fontFamily: "Roboto",
+                    fontSize: 16,
+                    // fontWeight: FontWeight.w500,
+                    fontVariations: [FontVariation("wght", 500)],
+                    height: 1.5,
+                  ),
+                ),
+                if (widget.isOptional)
+                  Text(
+                    "(Optional)",
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 16,
+                      color: AppColors.textSecondary,
+                      fontVariations: [FontVariation("wght", 500)],
+                      height: 1.5,
+                    ),
+                  ),
+              ],
             ),
           ),
         GestureDetector(
@@ -143,7 +161,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       contentPadding: EdgeInsets.zero,
                       hintText: widget.hintText,
                       hintStyle: TextStyle(
-                        fontSize: 12,
                         color: AppColors.textDisabled,
                       ),
                     ),

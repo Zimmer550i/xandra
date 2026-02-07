@@ -6,12 +6,13 @@ import 'package:xandra/views/base/custom_app_bar.dart';
 import 'package:xandra/views/base/custom_button.dart';
 import 'package:xandra/views/base/product_card.dart';
 import 'package:xandra/views/screens/app.dart';
+import 'package:xandra/views/screens/cart/order_details.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
 
   onSubmit() async {
-
+    Get.to(() => OrderDetails());
   }
 
   @override

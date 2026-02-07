@@ -3,6 +3,7 @@ import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
 import 'package:xandra/views/base/custom_button.dart';
+import 'package:xandra/views/base/match_widget.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -20,9 +21,21 @@ class ProductDetails extends StatelessWidget {
                 constraints: BoxConstraints(
                   maxHeight: MediaQuery.of(context).size.height / 2,
                 ),
-                child: Image.asset(
-                  "assets/images/product.png",
-                  fit: BoxFit.fitWidth,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Positioned.fill(
+                      child: Image.asset(
+                        "assets/images/product.png",
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                    Positioned(
+                      left: 20,
+                      bottom: 12,
+                      child: MatchWidget(val: 98, showAmount: true),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 24),
@@ -139,18 +152,137 @@ class ProductDetails extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Color(0xff_F6E4EB)),
-                          ),
-                          child: Center(
-                            child: CustomSvg(
-                              asset: "assets/icons/heart.svg",
-                              color: AppColors.brandSecondary,
-                              size: 24,
+                        GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: SafeArea(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          width: 44,
+                                          height: 3,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xff_D9D9D9),
+                                            borderRadius: BorderRadius.circular(
+                                              99,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 18),
+                                        Text(
+                                          "Add to saved Looks & Products",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 18),
+                                        GestureDetector(
+                                          onTap: () {},
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  "Save as Look",
+                                                  style: TextStyle(
+                                                    color:
+                                                        AppColors.textDisabled,
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                height: 28,
+                                                width: 28,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: AppColors.offWhite,
+                                                  border: Border.all(
+                                                    color:
+                                                        AppColors.textDisabled,
+                                                  ),
+                                                ),
+                                                child: Center(
+                                                  child: Icon(
+                                                    Icons.add,
+                                                    size: 24,
+                                                    color:
+                                                        AppColors.textDisabled,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                            top: 12,
+                                            bottom: 12,
+                                          ),
+                                          height: 1,
+                                          width: double.infinity,
+                                          color: Color(0xff_F4ECE9),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {},
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  "Save as Product",
+                                                  style: TextStyle(
+                                                    color:
+                                                        AppColors.textSecondary,
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                height: 28,
+                                                width: 28,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: AppColors.offWhite,
+                                                  border: Border.all(
+                                                    color:
+                                                        AppColors.textDisabled,
+                                                  ),
+                                                ),
+                                                child: Center(
+                                                  child: Icon(
+                                                    Icons.add,
+                                                    size: 24,
+                                                    color:
+                                                        AppColors.textSecondary,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                            width: 48,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Color(0xff_F6E4EB)),
+                            ),
+                            child: Center(
+                              child: CustomSvg(
+                                asset: "assets/icons/heart.svg",
+                                color: AppColors.brandSecondary,
+                                size: 24,
+                              ),
                             ),
                           ),
                         ),

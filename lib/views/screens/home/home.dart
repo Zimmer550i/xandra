@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
+import 'package:xandra/views/base/match_widget.dart';
 import 'package:xandra/views/base/profile_picture.dart';
 import 'package:xandra/views/screens/home/upload_information.dart';
 
@@ -144,19 +145,7 @@ class Home extends StatelessWidget {
           Row(
             spacing: 8,
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(999),
-                  color: AppColors.highMatchButton,
-                ),
-                child: Center(
-                  child: Text(
-                    "High Match",
-                    style: TextStyle(fontSize: 16, color: AppColors.success),
-                  ),
-                ),
-              ),
+              MatchWidget(val: 90),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
