@@ -273,7 +273,7 @@ class _ProfileState extends State<Profile> {
                   },
                 ),
               ),
-              SizedBox(height: 60 + MediaQuery.of(context).viewPadding.bottom),
+              SizedBox(height: 73 +7),
             ],
           ),
         ),

@@ -11,7 +11,7 @@ class ProfileCreated extends StatelessWidget {
   const ProfileCreated({super.key});
 
   onSubmit() async {
-    Get.to(() => App(), routeName: "/app");
+    Get.to(() => App(key: appKey), routeName: "/app");
   }
 
   @override

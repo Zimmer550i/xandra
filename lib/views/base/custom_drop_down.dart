@@ -2,7 +2,6 @@ import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:xandra/utils/app_texts.dart';
 
 class CustomDropDown extends StatefulWidget {
   final String? title;
@@ -21,7 +20,7 @@ class CustomDropDown extends StatefulWidget {
     required this.options,
     this.onChanged,
     this.radius = 24,
-    this.height,
+    this.height = 48,
     this.width,
   });
 
@@ -52,9 +51,10 @@ class _CustomDropDownState extends State<CustomDropDown> {
           Text(
             widget.title!,
             style: TextStyle(
-              fontVariations: [FontVariation("wght", 600)],
+              fontFamily: "Roboto",
               fontSize: 16,
-              color: AppColors.brandPrimary,
+              fontVariations: [FontVariation("wght", 500)],
+              height: 1.5,
             ),
           ),
 
@@ -65,10 +65,12 @@ class _CustomDropDownState extends State<CustomDropDown> {
             });
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
-              color: AppColors.brandPrimary,
               borderRadius: BorderRadius.circular(widget.radius),
+              border: isExpanded
+                  ? Border.all(color: AppColors.brandPrimary, width: 1.5)
+                  : Border.all(color: Color(0xff_919191)),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -80,21 +82,32 @@ class _CustomDropDownState extends State<CustomDropDown> {
                       currentVal == null
                           ? Text(
                               widget.hintText ?? "Select One",
-                              style: AppTexts.tsmr.copyWith(
-                                color: AppColors.brandSecondary,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.textDisabled,
                               ),
                             )
                           : Text(
                               currentVal!,
-                              style: AppTexts.tsmr.copyWith(
-                                color: AppColors.brandSecondary,
+                              style: TextStyle(
+                                color: isExpanded
+                                    ? AppColors.darkTextSecondary
+                                    : null,
                               ),
                             ),
                       const Spacer(),
                       AnimatedRotation(
                         duration: defaultDuration,
                         turns: isExpanded ? 0.5 : 1,
-                        child: SvgPicture.asset(AppIcons.arrowDown),
+                        child: SvgPicture.asset(
+                          AppIcons.arrowDown,
+                          colorFilter: ColorFilter.mode(
+                            isExpanded
+                                ? AppColors.brandPrimary
+                                : AppColors.brandSecondary,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -121,7 +134,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                                   decoration: BoxDecoration(
                                     border: Border(
                                       top: BorderSide(
-                                        color: AppColors.brandPrimary,
+                                        color: Color(0xff_919191),
                                         width: 0.5,
                                       ),
                                     ),
@@ -131,8 +144,10 @@ class _CustomDropDownState extends State<CustomDropDown> {
                                     child: Text(
                                       e,
                                       style: TextStyle(
-                                        color: AppColors.textDisabled,
-                                        fontSize: 14,
+                                        fontSize: currentVal == e ? 16 : 14,
+                                        fontWeight: currentVal == e
+                                            ? FontWeight.w500
+                                            : null,
                                       ),
                                     ),
                                   ),

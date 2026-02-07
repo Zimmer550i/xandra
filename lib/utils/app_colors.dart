@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-
   // Xandra App UI Colors
 
   // Primary Backgrounds
@@ -18,6 +17,9 @@ class AppColors {
   static const Color textDisabled = Color(0xFFB8B8BD);
   static const Color borderDivider = Color(0xFFE6E3E0);
   static const Color cardBackground = Color(0xFFFFFFFF);
+
+  static const Color highMatchButton = Color(0xFFDEFFEF);
+  static const Color shopNowButton = Color(0xFFFDEDF2);
 
   // Commerce & Status Colors
   static const Color success = Color(0xFF2FA36B);

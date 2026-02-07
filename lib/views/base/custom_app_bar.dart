@@ -33,35 +33,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(width: 20),
-            InkWell(
-              onTap: () => hasLeading ? Get.back() : null,
-              borderRadius: BorderRadius.circular(99),
-              child: Container(
-                height: 38,
-                width: 38,
-                decoration: BoxDecoration(
-                  color: Get.find<ThemeController>().darkTheme
-                      ? AppColors.darkBackground
-                      : Colors.white,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Get.find<ThemeController>().darkTheme
-                        ? Color(0xff_202020)
-                        : Color(0xff_ebebeb),
-                  ),
-                ),
-                child: hasLeading
-                    ? Center(
+            hasLeading
+                ? InkWell(
+                    onTap: () => hasLeading ? Get.back() : null,
+                    borderRadius: BorderRadius.circular(99),
+                    child: Container(
+                      height: 38,
+                      width: 38,
+                      decoration: BoxDecoration(
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkBackground
+                            : Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Get.find<ThemeController>().darkTheme
+                              ? Color(0xff_202020)
+                              : Color(0xff_ebebeb),
+                        ),
+                      ),
+                      child: Center(
                         child: CustomSvg(
                           asset: AppIcons.back,
                           color: Get.find<ThemeController>().darkTheme
                               ? Color(0xff_dfdfdf)
                               : null,
                         ),
-                      )
-                    : const SizedBox(),
-              ),
-            ),
+                      ),
+                    ),
+                  )
+                : const SizedBox(height: 38, width: 38),
             const SizedBox(width: 8),
             Expanded(
               child: Text(

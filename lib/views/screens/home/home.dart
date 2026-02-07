@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/profile_picture.dart';
+import 'package:xandra/views/screens/home/upload_information.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -48,163 +50,9 @@ class Home extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    // Product Card
-                                    Container(
-                                      padding: EdgeInsets.all(12),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: Color(
-                                          0xff_e6e6e6,
-                                        ).withValues(alpha: 0.72),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Match Fever Lipstick",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 2),
-                                          Text(
-                                            "VELYYA",
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                          const SizedBox(height: 18),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                height: 16,
-                                                width: 16,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Color(0xff_E25B65),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 8),
-                                              Expanded(
-                                                child: Text(
-                                                  "Peachy Blush",
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(height: 20),
-                                          Row(
-                                            spacing: 8,
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 12,
-                                                  vertical: 8,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        999,
-                                                      ),
-                                                  color: AppColors.success
-                                                      .withValues(alpha: 0.15),
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "High Match",
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: AppColors.success,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                  horizontal: 12,
-                                                  vertical: 8,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                        999,
-                                                      ),
-                                                  color: AppColors.brandSecondary
-                                                      .withValues(alpha: 0.15),
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "Shop Now",
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: AppColors.brandPrimary,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    productCard(),
                                     const SizedBox(height: 24),
-                                    Row(
-                                      children: [
-                                        ProfilePicture(
-                                          image:
-                                              "https://thispersondoesnotexist.com",
-                                          size: 50,
-                                        ),
-                                        const SizedBox(width: 8),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Josefine Johnson",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 20,
-                                              ),
-                                            ),
-
-                                            Text(
-                                              "@josefinejohnson",
-                                              style: TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 24),
-                                    Wrap(
-                                      spacing: 8,
-                                      children: [
-                                        for (int i = 0; i < 4; i++)
-                                          Text(
-                                            "#SoftGlam",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 18,
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 12),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text("Love this shade!"),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          60 +
-                                          MediaQuery.of(
-                                            context,
-                                          ).viewPadding.bottom,
-                                    ),
+                                    videoInformation(context),
                                   ],
                                 ),
                               ),
@@ -239,6 +87,7 @@ class Home extends StatelessWidget {
             right: 20,
             child: SafeArea(
               child: GestureDetector(
+                onTap: () => Get.to(() => UploadInformation()),
                 child: Container(
                   height: 44,
                   width: 44,
@@ -255,6 +104,120 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Container productCard() {
+    return Container(
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Color(0xff_e6e6e6).withValues(alpha: 0.72),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Match Fever Lipstick",
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+          ),
+          const SizedBox(height: 2),
+          Text("VELYYA", style: TextStyle(fontSize: 16)),
+          const SizedBox(height: 18),
+          Row(
+            children: [
+              Container(
+                height: 16,
+                width: 16,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xff_E25B65),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text("Peachy Blush", style: TextStyle(fontSize: 16)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            spacing: 8,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(999),
+                  color: AppColors.highMatchButton,
+                ),
+                child: Center(
+                  child: Text(
+                    "High Match",
+                    style: TextStyle(fontSize: 16, color: AppColors.success),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(999),
+                  color: AppColors.shopNowButton,
+                ),
+                child: Center(
+                  child: Text(
+                    "Shop Now",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.brandPrimary,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget videoInformation(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            ProfilePicture(
+              image: "https://thispersondoesnotexist.com",
+              size: 50,
+            ),
+            const SizedBox(width: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Josefine Johnson",
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                ),
+
+                Text("@josefinejohnson", style: TextStyle(fontSize: 16)),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Wrap(
+          spacing: 8,
+          children: [
+            for (int i = 0; i < 4; i++)
+              Text(
+                "#SoftGlam",
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Align(alignment: Alignment.centerLeft, child: Text("Love this shade!")),
+        SizedBox(height: 60 + MediaQuery.of(context).viewPadding.bottom),
+      ],
     );
   }
 

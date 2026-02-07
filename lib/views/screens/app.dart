@@ -2,24 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/views/base/custom_bottom_navbar.dart';
+import 'package:xandra/views/screens/cart/cart.dart';
+import 'package:xandra/views/screens/explore/explore.dart';
 import 'package:xandra/views/screens/home/home.dart';
 import 'package:xandra/views/screens/profile/profile.dart';
+
+final GlobalKey<AppState> appKey = GlobalKey<AppState>();
 
 class App extends StatefulWidget {
   const App({super.key});
 
   @override
-  State<App> createState() => _AppState();
+  State<App> createState() => AppState();
 }
 
-class _AppState extends State<App> {
+class AppState extends State<App> {
   int index = 0;
+
+  void setIndex(int newIndex) {
+    setState(() {
+      index = newIndex;
+    });
+  }
 
   List<Widget> pages = [
     Home(),
     FlutterLogo(size: 100),
-    FlutterLogo(size: 150),
-    FlutterLogo(size: 200),
+    Explore(),
+    Cart(),
     Profile(),
   ];
 
