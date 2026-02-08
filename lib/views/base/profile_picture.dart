@@ -112,7 +112,7 @@ class ProfilePicture extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   padding: EdgeInsets.all(8),
-                  child: CustomSvg(asset: AppIcons.edit, size: 18),
+                  child: CustomSvg(asset: "assets/icons/camera.svg", size: 18),
                 ),
               ),
             ),

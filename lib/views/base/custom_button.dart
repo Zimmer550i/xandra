@@ -50,7 +50,7 @@ class _CustomButtonState extends State<CustomButton> {
         padding: EdgeInsets.symmetric(horizontal: widget.padding),
         decoration: BoxDecoration(
           color: widget.isSecondary
-              ? AppColors.textDisabled
+              ? AppColors.offWhite
               : widget.isDisabled
               ? AppColors.brandSecondary
               : AppColors.brandPrimary,

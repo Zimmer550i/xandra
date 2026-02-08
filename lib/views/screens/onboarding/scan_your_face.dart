@@ -91,7 +91,7 @@ class ScanYourFace extends StatelessWidget {
                   CustomButton(
                     onTap: onSubmit,
                     text: "Take Photo",
-                    leading: "assets/icons/edit.svg",
+                    leading: "assets/icons/camera.svg",
                   ),
                   const SizedBox(height: 18),
                   GestureDetector(
