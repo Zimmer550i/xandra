@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/views/base/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +30,9 @@ class OverlayConfirmation extends StatelessWidget {
       insetPadding: EdgeInsets.symmetric(horizontal: 16),
       contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 28),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      backgroundColor: AppColors.cardBackground,
+      backgroundColor: Get.find<ThemeController>().darkTheme
+          ? Color(0xff_0D0D0D)
+          : AppColors.cardBackground,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,

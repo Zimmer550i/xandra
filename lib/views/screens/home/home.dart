@@ -34,7 +34,9 @@ class Home extends StatelessWidget {
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,
                             colors: [
-                              const Color(0xe5_EBEBEB),
+                              Get.find<ThemeController>().darkTheme
+                                  ? Color(0xff_181818)
+                                  : const Color(0xe5_EBEBEB),
                               Colors.transparent,
                             ],
                             stops: [0, 0.7],
@@ -88,19 +90,10 @@ class Home extends StatelessWidget {
             top: 0,
             right: 20,
             child: SafeArea(
-              child: GestureDetector(
-                onTap: () => Get.to(() => UploadInformation()),
-                child: Container(
-                  height: 44,
-                  width: 44,
-                  decoration: BoxDecoration(
-                    color: Color(0xff_9E7B66),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: CustomSvg(asset: "assets/icons/creator.svg"),
-                  ),
-                ),
+              child: actionButton(
+                "creator",
+                0,
+                () => Get.to(() => UploadInformation()),
               ),
             ),
           ),
@@ -153,7 +146,9 @@ class Home extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(999),
-                  color: AppColors.shopNowButton,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_380018)
+                      : AppColors.shopNowButton,
                 ),
                 child: Center(
                   child: Text(
@@ -228,7 +223,9 @@ class Home extends StatelessWidget {
             child: Center(
               child: CustomSvg(
                 asset: "assets/icons/$assetName.svg",
-                color: AppColors.textPrimary,
+                color: Get.find<ThemeController>().darkTheme
+                    ? AppColors.offWhite
+                    : AppColors.textPrimary,
                 size: 28,
               ),
             ),
@@ -244,6 +241,8 @@ class Home extends StatelessWidget {
   }
 
   String _formatCount(int count) {
+    if (count == 0) return "";
+    
     if (count < 1000) {
       return count.toString();
     }

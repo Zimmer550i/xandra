@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 
 class CustomTabs extends StatelessWidget {
@@ -28,7 +30,11 @@ class CustomTabs extends StatelessWidget {
                 duration: Duration(milliseconds: 100),
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 decoration: BoxDecoration(
-                  color: selected == i ? Color(0xff_F7D6CF) : null,
+                  color: selected == i
+                      ? Get.find<ThemeController>().darkTheme
+                            ? Color(0xff_46160C)
+                            : Color(0xff_F7D6CF)
+                      : null,
                   borderRadius: BorderRadius.circular(99),
                 ),
                 child: Center(
@@ -37,7 +43,9 @@ class CustomTabs extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       color: selected == i
-                          ? AppColors.textPrimary
+                          ? (Get.find<ThemeController>().darkTheme
+                                ? AppColors.darkText
+                                : AppColors.textPrimary)
                           : AppColors.textSecondary,
                     ),
                   ),

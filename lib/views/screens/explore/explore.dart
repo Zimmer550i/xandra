@@ -25,6 +25,7 @@ class _ExploreState extends State<Explore> {
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
+            const SizedBox(height: 4,),
             Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(

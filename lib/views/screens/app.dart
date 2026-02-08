@@ -47,7 +47,7 @@ class AppState extends State<App> {
               index: index,
               onChanged: (val) {
                 if (val == 1) {
-                  Get.to(() => TryOn());
+                  Get.to(() => TryOn(tryOnType: TryOnType.findProduct,));
                   return;
                 }
                 setState(() {

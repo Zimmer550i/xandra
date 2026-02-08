@@ -44,15 +44,15 @@ class StartJourney extends StatelessWidget {
                     lightAngle: 0.5 * pi,
                     lightIntensity: 0.5,
                     ambientStrength: 0,
-                    refractiveIndex: 1.2,
-                    saturation: 1.5,
+                    refractiveIndex: 1.51,
+                    saturation: 1,
                   ),
                   child: LiquidGlass(
                     shape: LiquidRoundedSuperellipse(borderRadius: 30),
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Column(
-                        spacing: 12,
+                        spacing: 20,
                         children: [
                           Text(
                             "Your Personal\nSkincare Companion",

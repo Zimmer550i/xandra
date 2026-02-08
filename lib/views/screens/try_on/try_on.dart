@@ -207,7 +207,9 @@ class _TryOnState extends State<TryOn> {
                     margin: EdgeInsets.symmetric(vertical: 20),
                     height: 1,
                     width: double.infinity,
-                    color: Color(0xff_F4ECE9),
+                    color: Get.find<ThemeController>().darkTheme
+                        ? Color(0xff_51001A)
+                        : Color(0xff_F4ECE9),
                   ),
                   Text(
                     "Creamy, long-lasting lipstick that complements your skin undertone for a perfect match.",
@@ -239,12 +241,7 @@ class _TryOnState extends State<TryOn> {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: Get.find<ThemeController>().darkTheme
-                  ? Color(0xff_0d0d0d)
-                  : AppColors.offWhite,
-              width: 2,
-            ),
+            border: Border.all(color: AppColors.offWhite, width: 2),
           ),
         ),
         Positioned(
@@ -264,7 +261,9 @@ class _TryOnState extends State<TryOn> {
                         horizontal: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.2),
+                        color: Get.find<ThemeController>().darkTheme
+                            ? Color(0x330D0D0D)
+                            : Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(99),
                       ),
                       child: Row(
@@ -283,9 +282,7 @@ class _TryOnState extends State<TryOn> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: Get.find<ThemeController>().darkTheme
-                                  ? Color(0xff_0d0d0d)
-                                  : AppColors.offWhite,
+                              color: AppColors.offWhite,
                             ),
                           ),
                         ],
@@ -301,7 +298,9 @@ class _TryOnState extends State<TryOn> {
                   horizontal: 12,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0x330D0D0D)
+                      : Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(99),
                 ),
                 child: CustomSvg(asset: "assets/icons/peek.svg"),
@@ -326,13 +325,17 @@ class _TryOnState extends State<TryOn> {
             height: 48,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Color(0xff_F6E4EB)),
+              border: Border.all(
+                color: Get.find<ThemeController>().darkTheme
+                    ? Color(0xff_51001A)
+                    : Color(0xff_F6E4EB),
+              ),
             ),
             child: Center(
               child: CustomSvg(
                 asset: "assets/icons/heart.svg",
                 color: Get.find<ThemeController>().darkTheme
-                    ? Color(0xff_380018)
+                    ? AppColors.brandPrimary
                     : AppColors.brandSecondary,
                 size: 24,
               ),
@@ -360,7 +363,7 @@ class _TryOnState extends State<TryOn> {
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                       color: Get.find<ThemeController>().darkTheme
-                          ? Color(0xff_0d0d0d)
+                          ? Color(0xff_131313)
                           : AppColors.offWhite,
                     ),
                   ),
@@ -452,33 +455,36 @@ class _TryOnState extends State<TryOn> {
                 ),
                 GestureDetector(
                   onTap: () {},
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "Save as Product",
-                          style: TextStyle(color: AppColors.textDisabled),
-                        ),
-                      ),
-                      Container(
-                        height: 28,
-                        width: 28,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Get.find<ThemeController>().darkTheme
-                              ? Color(0xff_0d0d0d)
-                              : AppColors.offWhite,
-                          border: Border.all(color: AppColors.textDisabled),
-                        ),
-                        child: Center(
-                          child: Icon(
-                            Icons.add,
-                            size: 24,
-                            color: AppColors.textDisabled,
+                  child: Opacity(
+                    opacity: 0.4,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Save as Product",
+                            style: TextStyle(color: AppColors.textDisabled),
                           ),
                         ),
-                      ),
-                    ],
+                        Container(
+                          height: 28,
+                          width: 28,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Get.find<ThemeController>().darkTheme
+                                ? Color(0xff_0d0d0d)
+                                : AppColors.offWhite,
+                            border: Border.all(color: AppColors.textDisabled),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.add,
+                              size: 24,
+                              color: AppColors.textDisabled,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

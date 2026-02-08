@@ -44,7 +44,12 @@ class UploadVideo extends StatelessWidget {
                   spacing: 8,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomSvg(asset: "assets/icons/upload.svg"),
+                    CustomSvg(
+                      asset: "assets/icons/upload.svg",
+                      color: Get.find<ThemeController>().darkTheme
+                          ? AppColors.offWhite
+                          : null,
+                    ),
                     Text(
                       "Add Video",
                       style: TextStyle(

@@ -16,7 +16,9 @@ class ProductCardSquared extends StatelessWidget {
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColors.cardBackground,
+          color: Get.find<ThemeController>().darkTheme
+              ? Color(0xff_0D0D0D)
+              : AppColors.cardBackground,
           border: Border.all(
             color: Get.find<ThemeController>().darkTheme
                 ? AppColors.textSecondary
@@ -67,7 +69,9 @@ class ProductCardSquared extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: AppColors.shopNowButton,
+                    color: Get.find<ThemeController>().darkTheme
+                        ? Color(0x6e6F0F2E)
+                        : AppColors.shopNowButton,
                     borderRadius: BorderRadius.circular(99),
                   ),
                   child: Row(

@@ -14,7 +14,9 @@ class SavedVideosCard extends StatelessWidget {
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: AppColors.cardBackground,
+        color: Get.find<ThemeController>().darkTheme
+            ? Color(0xff_0D0D0D)
+            : AppColors.cardBackground,
         border: Border.all(
           color: Get.find<ThemeController>().darkTheme
               ? AppColors.textSecondary

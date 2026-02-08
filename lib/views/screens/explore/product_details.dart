@@ -69,6 +69,8 @@ class ProductDetails extends StatelessWidget {
                       style: TextStyle(
                         color: Get.find<ThemeController>().darkTheme
                             ? AppColors.darkTextSecondary
+                            : Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
                             : AppColors.textSecondary,
                         fontSize: 16,
                       ),
@@ -97,6 +99,8 @@ class ProductDetails extends StatelessWidget {
                       style: TextStyle(
                         color: Get.find<ThemeController>().darkTheme
                             ? AppColors.darkTextSecondary
+                            : Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
                             : AppColors.textSecondary,
                       ),
                     ),
@@ -104,12 +108,16 @@ class ProductDetails extends StatelessWidget {
                       margin: EdgeInsets.only(top: 20, bottom: 24),
                       height: 1,
                       width: double.infinity,
-                      color: Color(0xff_F4ECE9),
+                      color: Get.find<ThemeController>().darkTheme
+                          ? Color(0xff_271913)
+                          : Color(0xff_F4ECE9),
                     ),
                     Text(
                       "Based on your skin tone & undertone",
                       style: TextStyle(
                         color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : Get.find<ThemeController>().darkTheme
                             ? AppColors.darkTextSecondary
                             : AppColors.textSecondary,
                         fontSize: 16,
@@ -119,13 +127,22 @@ class ProductDetails extends StatelessWidget {
                     Row(
                       spacing: 20,
                       children: [
-                        for (int i = 0; i < 8; i++)
+                        for (var i in [
+                          const Color(0xFF742C49), // #742C49
+                          const Color(0xFF91385C), // #91385C
+                          const Color(0xFF9A3B62), // #9A3B62
+                          const Color(0xFFAE436E), // #AE436E
+                          const Color(0xFFE76461), // #E76461 (100%)
+                          const Color(0xCCE76461), // #E76461 (80% opacity)
+                          const Color(0x99E76461), // #E76461 (60% opacity)
+                          const Color(0x66E76461), // #E76461 (40% opacity)
+                        ])
                           Container(
                             height: 30,
                             width: 30,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Color(0xff_D4B896),
+                              color: i,
                             ),
                           ),
                       ],
@@ -134,7 +151,9 @@ class ProductDetails extends StatelessWidget {
                       margin: EdgeInsets.only(top: 20, bottom: 24),
                       height: 1,
                       width: double.infinity,
-                      color: Color(0xff_F4ECE9),
+                      color: Get.find<ThemeController>().darkTheme
+                          ? Color(0xff_271913)
+                          : Color(0xff_F4ECE9),
                     ),
                     // No idea how this section works
                     // No one does
@@ -144,6 +163,8 @@ class ProductDetails extends StatelessWidget {
                       "Creamy, long-lasting lipstick that complements your skin undertone for a perfect match.",
                       style: TextStyle(
                         color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : Get.find<ThemeController>().darkTheme
                             ? AppColors.darkTextSecondary
                             : AppColors.textSecondary,
                       ),
@@ -161,13 +182,17 @@ class ProductDetails extends StatelessWidget {
                             height: 48,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: Color(0xff_F6E4EB)),
+                              border: Border.all(
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_271913)
+                                    : Color(0xff_F6E4EB),
+                              ),
                             ),
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/try_on.svg",
                                 color: Get.find<ThemeController>().darkTheme
-                                    ? Color(0xff_380018)
+                                    ? AppColors.brandPrimary
                                     : AppColors.brandSecondary,
                                 size: 24,
                               ),
@@ -206,44 +231,47 @@ class ProductDetails extends StatelessWidget {
                                         const SizedBox(height: 18),
                                         GestureDetector(
                                           onTap: () {},
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  "Save as Look",
-                                                  style: TextStyle(
-                                                    color:
-                                                        AppColors.textDisabled,
+                                          child: Opacity(
+                                            opacity: 0.4,
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Text(
+                                                    "Save as Look",
+                                                    style: TextStyle(
+                                                      color: AppColors
+                                                          .textDisabled,
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              Container(
-                                                height: 28,
-                                                width: 28,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color:
-                                                      Get.find<
-                                                            ThemeController
-                                                          >()
-                                                          .darkTheme
-                                                      ? Color(0xff_0d0d0d)
-                                                      : AppColors.offWhite,
-                                                  border: Border.all(
+                                                Container(
+                                                  height: 28,
+                                                  width: 28,
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
                                                     color:
-                                                        AppColors.textDisabled,
+                                                        Get.find<
+                                                              ThemeController
+                                                            >()
+                                                            .darkTheme
+                                                        ? Color(0xff_0d0d0d)
+                                                        : AppColors.offWhite,
+                                                    border: Border.all(
+                                                      color: AppColors
+                                                          .textDisabled,
+                                                    ),
+                                                  ),
+                                                  child: Center(
+                                                    child: Icon(
+                                                      Icons.add,
+                                                      size: 24,
+                                                      color: AppColors
+                                                          .textDisabled,
+                                                    ),
                                                   ),
                                                 ),
-                                                child: Center(
-                                                  child: Icon(
-                                                    Icons.add,
-                                                    size: 24,
-                                                    color:
-                                                        AppColors.textDisabled,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                         Container(
@@ -253,7 +281,11 @@ class ProductDetails extends StatelessWidget {
                                           ),
                                           height: 1,
                                           width: double.infinity,
-                                          color: Color(0xff_F4ECE9),
+                                          color:
+                                              Get.find<ThemeController>()
+                                                  .darkTheme
+                                              ? Color(0xff_271913)
+                                              : Color(0xff_F4ECE9),
                                         ),
                                         GestureDetector(
                                           onTap: () {},
@@ -262,10 +294,7 @@ class ProductDetails extends StatelessWidget {
                                               Expanded(
                                                 child: Text(
                                                   "Save as Product",
-                                                  style: TextStyle(
-                                                    color:
-                                                        AppColors.textSecondary,
-                                                  ),
+                                                  style: TextStyle(),
                                                 ),
                                               ),
                                               Container(
@@ -290,7 +319,14 @@ class ProductDetails extends StatelessWidget {
                                                     Icons.add,
                                                     size: 24,
                                                     color:
-                                                        AppColors.textSecondary,
+                                                        Get.find<
+                                                              ThemeController
+                                                            >()
+                                                            .darkTheme
+                                                        ? AppColors
+                                                              .darkTextSecondary
+                                                        : AppColors
+                                                              .textSecondary,
                                                   ),
                                                 ),
                                               ),
@@ -309,13 +345,17 @@ class ProductDetails extends StatelessWidget {
                             height: 48,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: Color(0xff_F6E4EB)),
+                              border: Border.all(
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_271913)
+                                    : Color(0xff_F6E4EB),
+                              ),
                             ),
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/heart.svg",
                                 color: Get.find<ThemeController>().darkTheme
-                                    ? Color(0xff_380018)
+                                    ? AppColors.brandPrimary
                                     : AppColors.brandSecondary,
                                 size: 24,
                               ),

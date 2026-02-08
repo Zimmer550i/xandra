@@ -36,7 +36,11 @@ class ScanYourFace extends StatelessWidget {
                     child: Center(
                       child: Text(
                         "Position your face within the frame",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: AppColors.textPrimary,
+                          fontWeight: FontWeight.w500,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ),

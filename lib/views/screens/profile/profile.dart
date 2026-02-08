@@ -92,7 +92,9 @@ class _ProfileState extends State<Profile> {
               Container(
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.cardBackground,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0D0D0D)
+                      : AppColors.cardBackground,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
                         ? AppColors.textSecondary
