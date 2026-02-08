@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
@@ -66,7 +67,9 @@ class ProductDetails extends StatelessWidget {
                     Text(
                       "VELYYA",
                       style: TextStyle(
-                        color: AppColors.textSecondary,
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
                         fontSize: 16,
                       ),
                     ),
@@ -91,7 +94,11 @@ class ProductDetails extends StatelessWidget {
                     const SizedBox(height: 12),
                     Text(
                       "Creamy, long-lasting lipstick that complements your skin undertone for a perfect match.",
-                      style: TextStyle(color: AppColors.textSecondary),
+                      style: TextStyle(
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 20, bottom: 24),
@@ -102,7 +109,9 @@ class ProductDetails extends StatelessWidget {
                     Text(
                       "Based on your skin tone & undertone",
                       style: TextStyle(
-                        color: AppColors.textSecondary,
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
                         fontSize: 16,
                       ),
                     ),
@@ -133,7 +142,11 @@ class ProductDetails extends StatelessWidget {
                     const SizedBox(height: 12),
                     Text(
                       "Creamy, long-lasting lipstick that complements your skin undertone for a perfect match.",
-                      style: TextStyle(color: AppColors.textSecondary),
+                      style: TextStyle(
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
+                      ),
                     ),
                     const SizedBox(height: 24),
                     Row(
@@ -153,7 +166,9 @@ class ProductDetails extends StatelessWidget {
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/try_on.svg",
-                                color: AppColors.brandSecondary,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_380018)
+                                    : AppColors.brandSecondary,
                                 size: 24,
                               ),
                             ),
@@ -207,7 +222,13 @@ class ProductDetails extends StatelessWidget {
                                                 width: 28,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  color: AppColors.offWhite,
+                                                  color:
+                                                      Get.find<
+                                                            ThemeController
+                                                          >()
+                                                          .darkTheme
+                                                      ? Color(0xff_0d0d0d)
+                                                      : AppColors.offWhite,
                                                   border: Border.all(
                                                     color:
                                                         AppColors.textDisabled,
@@ -252,7 +273,13 @@ class ProductDetails extends StatelessWidget {
                                                 width: 28,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  color: AppColors.offWhite,
+                                                  color:
+                                                      Get.find<
+                                                            ThemeController
+                                                          >()
+                                                          .darkTheme
+                                                      ? Color(0xff_0d0d0d)
+                                                      : AppColors.offWhite,
                                                   border: Border.all(
                                                     color:
                                                         AppColors.textDisabled,
@@ -287,7 +314,9 @@ class ProductDetails extends StatelessWidget {
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/heart.svg",
-                                color: AppColors.brandSecondary,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_380018)
+                                    : AppColors.brandSecondary,
                                 size: 24,
                               ),
                             ),

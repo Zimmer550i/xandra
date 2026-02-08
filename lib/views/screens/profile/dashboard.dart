@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
@@ -24,7 +25,11 @@ class Dashboard extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -41,7 +46,11 @@ class Dashboard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       "Based on your products",
-                      style: TextStyle(color: AppColors.textSecondary),
+                      style: TextStyle(
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Row(
@@ -54,9 +63,13 @@ class Dashboard extends StatelessWidget {
                               vertical: 20,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.offWhite,
+                              color: Get.find<ThemeController>().darkTheme
+                                  ? Color(0xff_0d0d0d)
+                                  : AppColors.offWhite,
                               border: Border.all(
-                                color: AppColors.borderDivider,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? AppColors.textSecondary
+                                    : AppColors.borderDivider,
                               ),
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -85,9 +98,13 @@ class Dashboard extends StatelessWidget {
                               vertical: 20,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.offWhite,
+                              color: Get.find<ThemeController>().darkTheme
+                                  ? Color(0xff_0d0d0d)
+                                  : AppColors.offWhite,
                               border: Border.all(
-                                color: AppColors.borderDivider,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? AppColors.textSecondary
+                                    : AppColors.borderDivider,
                               ),
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -119,8 +136,14 @@ class Dashboard extends StatelessWidget {
                         vertical: 20,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.offWhite,
-                        border: Border.all(color: AppColors.borderDivider),
+                        color: Get.find<ThemeController>().darkTheme
+                            ? Color(0xff_0d0d0d)
+                            : AppColors.offWhite,
+                        border: Border.all(
+                          color: Get.find<ThemeController>().darkTheme
+                              ? AppColors.textSecondary
+                              : AppColors.borderDivider,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Column(
@@ -157,8 +180,14 @@ class Dashboard extends StatelessWidget {
                           vertical: 20,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.offWhite,
-                          border: Border.all(color: AppColors.borderDivider),
+                          color: Get.find<ThemeController>().darkTheme
+                              ? Color(0xff_0d0d0d)
+                              : AppColors.offWhite,
+                          border: Border.all(
+                            color: Get.find<ThemeController>().darkTheme
+                                ? AppColors.textSecondary
+                                : AppColors.borderDivider,
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Column(

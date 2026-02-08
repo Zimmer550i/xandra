@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/app_icons.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +74,9 @@ class ProfilePicture extends StatelessWidget {
                       return Container(
                         width: size,
                         height: size,
-                        color: AppColors.brandSecondary,
+                        color: Get.find<ThemeController>().darkTheme
+                            ? Color(0xff_380018)
+                            : AppColors.brandSecondary,
                         child: Icon(Icons.error, color: Colors.blue),
                       );
                     },
@@ -86,7 +90,11 @@ class ProfilePicture extends StatelessWidget {
                     padding: EdgeInsets.all(size * 0.17),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: AppColors.brandSecondary),
+                      border: Border.all(
+                        color: Get.find<ThemeController>().darkTheme
+                            ? Color(0xff_380018)
+                            : AppColors.brandSecondary,
+                      ),
                     ),
                     child: Center(
                       child: SvgPicture.asset(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/match_widget.dart';
@@ -113,7 +114,9 @@ class Home extends StatelessWidget {
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Color(0xff_e6e6e6).withValues(alpha: 0.72),
+        color: Get.find<ThemeController>().darkTheme
+            ? Color(0xff_252525).withValues(alpha: 0.78)
+            : Color(0xff_e6e6e6).withValues(alpha: 0.72),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

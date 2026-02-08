@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/views/base/custom_loading.dart';
 
@@ -79,7 +81,9 @@ class PullToRefreshState extends State<PullToRefresh> {
                     boxShadow: [
                       BoxShadow(
                         offset: Offset(0, 2),
-                        color: AppColors.brandSecondary.withAlpha(100),
+                        color: Get.find<ThemeController>().darkTheme
+                            ? Color(0xff_380018)
+                            : AppColors.brandSecondary.withAlpha(100),
                         spreadRadius: 2,
                         blurRadius: 5,
                       ),

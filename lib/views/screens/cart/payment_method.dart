@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/models/cliclable_object.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
@@ -17,7 +18,10 @@ class PaymentMethod extends StatefulWidget {
 class _PaymentMethodState extends State<PaymentMethod> {
   List<CliclableObject> data = [
     CliclableObject(title: "Stripe", assetName: 'stripe'),
-    CliclableObject(title: "Apple", assetName: 'apple'),
+    CliclableObject(
+      title: "Apple",
+      assetName: 'apple${Get.find<ThemeController>().darkTheme ? "_dark" : ""}',
+    ),
     CliclableObject(title: "Google", assetName: 'google'),
   ];
   int? selectedMethod;
@@ -39,8 +43,14 @@ class _PaymentMethodState extends State<PaymentMethod> {
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Color(0xff_ebebeb)),
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0d0d0d)
+                      : Colors.white,
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? Color(0xff_2D2924)
+                        : Color(0xff_ebebeb),
+                  ),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
                 ),
@@ -52,7 +62,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     return Container(
                       height: 1,
                       width: double.infinity,
-                      color: Color(0xff_F4ECE9),
+                      color: Get.find<ThemeController>().darkTheme
+                          ? Color(0xff_2D2924)
+                          : Color(0xff_F4ECE9),
                     );
                   },
                   itemBuilder: (context, index) {

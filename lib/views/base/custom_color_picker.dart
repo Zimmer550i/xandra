@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 
 class CustomColorPicker extends StatefulWidget {
@@ -82,7 +84,9 @@ class _CustomColorPickerState extends State<CustomColorPicker> {
                   width: 24,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppColors.offWhite,
+                    color: Get.find<ThemeController>().darkTheme
+                        ? Color(0xff_0d0d0d)
+                        : AppColors.offWhite,
                     border: Border.all(color: Color(0xff_cecece)),
                     boxShadow: [
                       BoxShadow(

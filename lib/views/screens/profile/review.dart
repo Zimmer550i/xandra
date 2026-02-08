@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
@@ -27,7 +28,11 @@ class Review extends StatelessWidget {
               const SizedBox(height: 40),
               Text(
                 "How would you rate your experience?",
-                style: TextStyle(color: AppColors.textSecondary),
+                style: TextStyle(
+                  color: Get.find<ThemeController>().darkTheme
+                      ? AppColors.darkTextSecondary
+                      : AppColors.textSecondary,
+                ),
               ),
               const SizedBox(height: 16),
               Center(

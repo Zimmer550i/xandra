@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/models/cliclable_object.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
@@ -47,7 +48,11 @@ class _SettingsState extends State<Settings> {
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: AppColors.cardBackground,
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListView.separated(
@@ -104,7 +109,9 @@ class _SettingsState extends State<Settings> {
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/${item.assetName}.svg",
-                                color: AppColors.brandSecondary,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_380018)
+                                    : AppColors.brandSecondary,
                                 size: 24,
                               ),
                             ),

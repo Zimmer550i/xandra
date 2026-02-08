@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
 import 'package:xandra/views/base/custom_button.dart';
@@ -43,8 +44,14 @@ class _OrderDetailsState extends State<OrderDetails> {
               Container(
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Color(0xff_ebebeb)),
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0d0d0d)
+                      : Colors.white,
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : Color(0xff_ebebeb),
+                  ),
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
                 ),
@@ -187,7 +194,11 @@ class _OrderDetailsState extends State<OrderDetails> {
                   ),
                   Text(
                     subtitle,
-                    style: TextStyle(color: AppColors.textSecondary),
+                    style: TextStyle(
+                      color: Get.find<ThemeController>().darkTheme
+                          ? AppColors.darkTextSecondary
+                          : AppColors.textSecondary,
+                    ),
                   ),
                 ],
               ),

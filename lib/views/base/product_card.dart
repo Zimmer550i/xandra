@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_snackbar.dart';
 import 'package:xandra/utils/custom_svg.dart';
@@ -21,8 +22,14 @@ class ProductCard extends StatelessWidget {
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: AppColors.cardBackground,
-          border: Border.all(color: AppColors.borderDivider),
+          color: Get.find<ThemeController>().darkTheme
+              ? Color(0xff_0d0d0d)
+              : AppColors.cardBackground,
+          border: Border.all(
+            color: Get.find<ThemeController>().darkTheme
+                ? AppColors.textSecondary
+                : AppColors.borderDivider,
+          ),
         ),
         child: Column(
           spacing: 8,
@@ -33,7 +40,11 @@ class ProductCard extends StatelessWidget {
                   height: 80,
                   width: 80,
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.borderDivider),
+                    border: Border.all(
+                      color: Get.find<ThemeController>().darkTheme
+                          ? AppColors.textSecondary
+                          : AppColors.borderDivider,
+                    ),
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
                       image: AssetImage("assets/images/product.png"),
@@ -48,7 +59,11 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Text(
                         "GLOW LUXE",
-                        style: TextStyle(color: AppColors.textSecondary),
+                        style: TextStyle(
+                          color: Get.find<ThemeController>().darkTheme
+                              ? AppColors.darkTextSecondary
+                              : AppColors.textSecondary,
+                        ),
                       ),
 
                       Text(
@@ -61,7 +76,9 @@ class ProductCard extends StatelessWidget {
                       Text(
                         "Rose Petal",
                         style: TextStyle(
-                          color: AppColors.textSecondary,
+                          color: Get.find<ThemeController>().darkTheme
+                              ? AppColors.darkTextSecondary
+                              : AppColors.textSecondary,
                           height: 1,
                         ),
                       ),
@@ -86,35 +103,36 @@ class ProductCard extends StatelessWidget {
                   ),
               ],
             ),
-            Row(
-              spacing: 8,
-              children: [
-                Expanded(
-                  child: CustomButton(
-                    onTap: () {
-                      // Add to cart
-                      customSnackBar(
-                        "Product added to the cart",
-                        isError: false,
-                      );
-                    },
-                    text: "Reorder",
-                    fontSize: 14,
-                    height: 30,
+            if (cardType == CardType.history)
+              Row(
+                spacing: 8,
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      onTap: () {
+                        // Add to cart
+                        customSnackBar(
+                          "Product added to the cart",
+                          isError: false,
+                        );
+                      },
+                      text: "Reorder",
+                      fontSize: 14,
+                      height: 30,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: CustomButton(
-                    onTap: () {
-                      Get.to(() => Review());
-                    },
-                    text: "Leave review",
-                    fontSize: 14,
-                    height: 30,
+                  Expanded(
+                    child: CustomButton(
+                      onTap: () {
+                        Get.to(() => Review());
+                      },
+                      text: "Leave review",
+                      fontSize: 14,
+                      height: 30,
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
           ],
         ),
       ),
@@ -136,14 +154,18 @@ class ProductCard extends StatelessWidget {
                 width: 28,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.offWhite,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0d0d0d)
+                      : AppColors.offWhite,
                   border: Border.all(color: AppColors.textDisabled),
                 ),
                 child: Center(
                   child: Icon(
                     Icons.remove,
                     size: 24,
-                    color: AppColors.textSecondary,
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.darkTextSecondary
+                        : AppColors.textSecondary,
                   ),
                 ),
               ),
@@ -153,7 +175,11 @@ class ProductCard extends StatelessWidget {
               child: Center(
                 child: Text(
                   "1",
-                  style: TextStyle(color: AppColors.textSecondary),
+                  style: TextStyle(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.darkTextSecondary
+                        : AppColors.textSecondary,
+                  ),
                 ),
               ),
             ),
@@ -164,14 +190,18 @@ class ProductCard extends StatelessWidget {
                 width: 28,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.offWhite,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0d0d0d)
+                      : AppColors.offWhite,
                   border: Border.all(color: AppColors.textDisabled),
                 ),
                 child: Center(
                   child: Icon(
                     Icons.add,
                     size: 24,
-                    color: AppColors.textSecondary,
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.darkTextSecondary
+                        : AppColors.textSecondary,
                   ),
                 ),
               ),

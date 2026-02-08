@@ -56,9 +56,11 @@ class _TryOnState extends State<TryOn> {
                                   height: 38,
                                   width: 38,
                                   decoration: BoxDecoration(
-                                    color: AppColors.offWhite.withValues(
-                                      alpha: 0.17,
-                                    ),
+                                    color: Get.find<ThemeController>().darkTheme
+                                        ? Color(0xff_0d0d0d)
+                                        : AppColors.offWhite.withValues(
+                                            alpha: 0.17,
+                                          ),
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       color:
@@ -87,7 +89,9 @@ class _TryOnState extends State<TryOn> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 20,
-                                    color: AppColors.offWhite,
+                                    color: Get.find<ThemeController>().darkTheme
+                                        ? Color(0xff_0d0d0d)
+                                        : AppColors.offWhite,
                                   ),
                                 ),
                               ),
@@ -191,7 +195,9 @@ class _TryOnState extends State<TryOn> {
                   Text(
                     "VELYYA",
                     style: TextStyle(
-                      color: AppColors.textSecondary,
+                      color: Get.find<ThemeController>().darkTheme
+                          ? AppColors.darkTextSecondary
+                          : AppColors.textSecondary,
                       fontSize: 16,
                     ),
                   ),
@@ -205,7 +211,11 @@ class _TryOnState extends State<TryOn> {
                   ),
                   Text(
                     "Creamy, long-lasting lipstick that complements your skin undertone for a perfect match.",
-                    style: TextStyle(color: AppColors.textSecondary),
+                    style: TextStyle(
+                      color: Get.find<ThemeController>().darkTheme
+                          ? AppColors.darkTextSecondary
+                          : AppColors.textSecondary,
+                    ),
                   ),
                   const SizedBox(height: 20),
 
@@ -229,7 +239,12 @@ class _TryOnState extends State<TryOn> {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.offWhite, width: 2),
+            border: Border.all(
+              color: Get.find<ThemeController>().darkTheme
+                  ? Color(0xff_0d0d0d)
+                  : AppColors.offWhite,
+              width: 2,
+            ),
           ),
         ),
         Positioned(
@@ -268,7 +283,9 @@ class _TryOnState extends State<TryOn> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
-                              color: AppColors.offWhite,
+                              color: Get.find<ThemeController>().darkTheme
+                                  ? Color(0xff_0d0d0d)
+                                  : AppColors.offWhite,
                             ),
                           ),
                         ],
@@ -314,7 +331,9 @@ class _TryOnState extends State<TryOn> {
             child: Center(
               child: CustomSvg(
                 asset: "assets/icons/heart.svg",
-                color: AppColors.brandSecondary,
+                color: Get.find<ThemeController>().darkTheme
+                    ? Color(0xff_380018)
+                    : AppColors.brandSecondary,
                 size: 24,
               ),
             ),
@@ -340,7 +359,9 @@ class _TryOnState extends State<TryOn> {
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
-                      color: AppColors.offWhite,
+                      color: Get.find<ThemeController>().darkTheme
+                          ? Color(0xff_0d0d0d)
+                          : AppColors.offWhite,
                     ),
                   ),
                   Text(
@@ -348,7 +369,9 @@ class _TryOnState extends State<TryOn> {
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
-                      color: AppColors.offWhite,
+                      color: Get.find<ThemeController>().darkTheme
+                          ? Color(0xff_0d0d0d)
+                          : AppColors.offWhite,
                     ),
                   ),
                 ],
@@ -391,7 +414,11 @@ class _TryOnState extends State<TryOn> {
                       Expanded(
                         child: Text(
                           "Save as Look",
-                          style: TextStyle(color: AppColors.textSecondary),
+                          style: TextStyle(
+                            color: Get.find<ThemeController>().darkTheme
+                                ? AppColors.darkTextSecondary
+                                : AppColors.textSecondary,
+                          ),
                         ),
                       ),
                       Container(
@@ -399,14 +426,18 @@ class _TryOnState extends State<TryOn> {
                         width: 28,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.offWhite,
+                          color: Get.find<ThemeController>().darkTheme
+                              ? Color(0xff_0d0d0d)
+                              : AppColors.offWhite,
                           border: Border.all(color: AppColors.textDisabled),
                         ),
                         child: Center(
                           child: Icon(
                             Icons.add,
                             size: 24,
-                            color: AppColors.textSecondary,
+                            color: Get.find<ThemeController>().darkTheme
+                                ? AppColors.darkTextSecondary
+                                : AppColors.textSecondary,
                           ),
                         ),
                       ),
@@ -434,7 +465,9 @@ class _TryOnState extends State<TryOn> {
                         width: 28,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.offWhite,
+                          color: Get.find<ThemeController>().darkTheme
+                              ? Color(0xff_0d0d0d)
+                              : AppColors.offWhite,
                           border: Border.all(color: AppColors.textDisabled),
                         ),
                         child: Center(

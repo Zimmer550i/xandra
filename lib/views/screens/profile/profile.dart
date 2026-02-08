@@ -93,7 +93,11 @@ class _ProfileState extends State<Profile> {
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: AppColors.cardBackground,
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListView.separated(
@@ -129,7 +133,9 @@ class _ProfileState extends State<Profile> {
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/${item.assetName}.svg",
-                                color: AppColors.brandSecondary,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_380018)
+                                    : AppColors.brandSecondary,
                                 size: 24,
                               ),
                             ),

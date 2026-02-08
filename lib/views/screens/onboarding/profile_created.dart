@@ -167,7 +167,10 @@ class ProfileCreated extends StatelessWidget {
                     Row(
                       spacing: 8,
                       children: [
-                        CustomSvg(asset: "assets/icons/point.svg"),
+                        CustomSvg(
+                          asset:
+                              "assets/icons/point${Get.find<ThemeController>().darkTheme ? "_dark" : ""}.svg",
+                        ),
                         Text(
                           i,
                           style: TextStyle(

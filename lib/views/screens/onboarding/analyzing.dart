@@ -72,7 +72,9 @@ class Analyzing extends StatelessWidget {
                   value: .5,
                   minHeight: 8,
                   borderRadius: BorderRadius.circular(99),
-                  backgroundColor: AppColors.brandSecondary,
+                  backgroundColor: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_380018)
+                      : AppColors.brandSecondary,
                   color: AppColors.brandPrimary,
                 ),
               ),
@@ -106,7 +108,10 @@ class Analyzing extends StatelessWidget {
                       child: Row(
                         spacing: 8,
                         children: [
-                          CustomSvg(asset: "assets/icons/point.svg"),
+                          CustomSvg(
+                            asset:
+                                "assets/icons/point${Get.find<ThemeController>().darkTheme ? "_dark" : ""}.svg",
+                          ),
                           Text(
                             i,
                             style: TextStyle(

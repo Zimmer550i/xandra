@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
@@ -22,7 +23,11 @@ class AccountInformation extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: AppColors.cardBackground,
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
@@ -44,7 +49,9 @@ class AccountInformation extends StatelessWidget {
                               Text(
                                 "John Doe",
                                 style: TextStyle(
-                                  color: AppColors.textSecondary,
+                                  color: Get.find<ThemeController>().darkTheme
+                                      ? AppColors.darkTextSecondary
+                                      : AppColors.textSecondary,
                                 ),
                               ),
                             ],
@@ -86,7 +93,9 @@ class AccountInformation extends StatelessWidget {
                               Text(
                                 "wasiul0491@gmail.com",
                                 style: TextStyle(
-                                  color: AppColors.textSecondary,
+                                  color: Get.find<ThemeController>().darkTheme
+                                      ? AppColors.darkTextSecondary
+                                      : AppColors.textSecondary,
                                 ),
                               ),
                             ],
@@ -112,7 +121,9 @@ class AccountInformation extends StatelessWidget {
                               Text(
                                 "Last modified 1 month ago",
                                 style: TextStyle(
-                                  color: AppColors.textSecondary,
+                                  color: Get.find<ThemeController>().darkTheme
+                                      ? AppColors.darkTextSecondary
+                                      : AppColors.textSecondary,
                                 ),
                               ),
                             ],

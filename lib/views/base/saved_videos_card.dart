@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 
@@ -13,7 +15,11 @@ class SavedVideosCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: AppColors.cardBackground,
-        border: Border.all(color: AppColors.borderDivider),
+        border: Border.all(
+          color: Get.find<ThemeController>().darkTheme
+              ? AppColors.textSecondary
+              : AppColors.borderDivider,
+        ),
       ),
       child: Row(
         children: [
@@ -21,7 +27,11 @@ class SavedVideosCard extends StatelessWidget {
             height: 80,
             width: 80,
             decoration: BoxDecoration(
-              border: Border.all(color: AppColors.borderDivider),
+              border: Border.all(
+                color: Get.find<ThemeController>().darkTheme
+                    ? AppColors.textSecondary
+                    : AppColors.borderDivider,
+              ),
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
                 image: AssetImage("assets/images/ar.png"),
@@ -41,7 +51,11 @@ class SavedVideosCard extends StatelessWidget {
               children: [
                 Text(
                   "GLOW LUXE",
-                  style: TextStyle(color: AppColors.textSecondary),
+                  style: TextStyle(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.darkTextSecondary
+                        : AppColors.textSecondary,
+                  ),
                 ),
 
                 Text(
@@ -50,7 +64,12 @@ class SavedVideosCard extends StatelessWidget {
                 ),
                 Text(
                   "Rose Petal",
-                  style: TextStyle(color: AppColors.textSecondary, height: 1),
+                  style: TextStyle(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.darkTextSecondary
+                        : AppColors.textSecondary,
+                    height: 1,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Text(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
@@ -26,7 +28,11 @@ class _ExploreState extends State<Explore> {
             Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.borderDivider),
+                border: Border.all(
+                  color: Get.find<ThemeController>().darkTheme
+                      ? AppColors.textSecondary
+                      : AppColors.borderDivider,
+                ),
                 borderRadius: BorderRadius.circular(999),
               ),
               child: Row(
@@ -40,7 +46,11 @@ class _ExploreState extends State<Explore> {
                         isDense: true,
                         border: InputBorder.none,
                         hintText: "Search",
-                        hintStyle: TextStyle(color: AppColors.textSecondary),
+                        hintStyle: TextStyle(
+                          color: Get.find<ThemeController>().darkTheme
+                              ? AppColors.darkTextSecondary
+                              : AppColors.textSecondary,
+                        ),
                       ),
                     ),
                   ),

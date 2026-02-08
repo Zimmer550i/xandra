@@ -34,7 +34,11 @@ class UploadVideo extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 3,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                 ),
                 child: Column(
                   spacing: 8,

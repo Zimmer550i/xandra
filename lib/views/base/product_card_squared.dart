@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/screens/explore/product_details.dart';
@@ -16,7 +17,11 @@ class ProductCardSquared extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: AppColors.cardBackground,
-          border: Border.all(color: AppColors.borderDivider),
+          border: Border.all(
+            color: Get.find<ThemeController>().darkTheme
+                ? AppColors.textSecondary
+                : AppColors.borderDivider,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +30,11 @@ class ProductCardSquared extends StatelessWidget {
               aspectRatio: 1,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                     image: AssetImage("assets/images/product.png"),
@@ -34,7 +43,14 @@ class ProductCardSquared extends StatelessWidget {
                 ),
               ),
             ),
-            Text("GLOW LUXE", style: TextStyle(color: AppColors.textSecondary)),
+            Text(
+              "GLOW LUXE",
+              style: TextStyle(
+                color: Get.find<ThemeController>().darkTheme
+                    ? AppColors.darkTextSecondary
+                    : AppColors.textSecondary,
+              ),
+            ),
 
             Text(
               "Velvet Matt",

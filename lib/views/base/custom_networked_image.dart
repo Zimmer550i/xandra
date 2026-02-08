@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/app_texts.dart';
 import 'package:shimmer/shimmer.dart';
@@ -56,13 +58,20 @@ class CustomNetworkedImage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.error, color: AppColors.textSecondary),
+                        Icon(
+                          Icons.error,
+                          color: Get.find<ThemeController>().darkTheme
+                              ? AppColors.darkTextSecondary
+                              : AppColors.textSecondary,
+                        ),
                         Expanded(
                           child: Text(
                             error.toString(),
                             textAlign: TextAlign.center,
                             style: AppTexts.tsmr.copyWith(
-                              color: AppColors.textSecondary,
+                              color: Get.find<ThemeController>().darkTheme
+                                  ? AppColors.darkTextSecondary
+                                  : AppColors.textSecondary,
                             ),
                           ),
                         ),
@@ -73,7 +82,9 @@ class CustomNetworkedImage extends StatelessWidget {
               },
               placeholder: (context, url) {
                 return Shimmer.fromColors(
-                  baseColor: AppColors.brandSecondary,
+                  baseColor: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_380018)
+                      : AppColors.brandSecondary,
                   highlightColor: AppColors.textDisabled,
                   period: Duration(milliseconds: 800),
                   child: Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
 import 'package:xandra/views/base/custom_button.dart';
@@ -50,7 +51,9 @@ class _OrderPreviewState extends State<OrderPreview> {
                 margin: EdgeInsets.only(top: 8, bottom: 0),
                 height: 1,
                 width: double.infinity,
-                color: Color(0xff_F4ECE9),
+                color: Get.find<ThemeController>().darkTheme
+                    ? Color(0xff_271913)
+                    : Color(0xff_F4ECE9),
               ),
               Text(
                 "Details",
@@ -65,7 +68,9 @@ class _OrderPreviewState extends State<OrderPreview> {
                     margin: EdgeInsets.only(top: 12, bottom: 12),
                     height: 1,
                     width: double.infinity,
-                    color: Color(0xff_F4ECE9),
+                    color: Get.find<ThemeController>().darkTheme
+                        ? Color(0xff_271913)
+                        : Color(0xff_F4ECE9),
                   );
                 },
                 itemBuilder: (context, index) {
@@ -83,7 +88,9 @@ class _OrderPreviewState extends State<OrderPreview> {
               Container(
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.brandSecondary,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_380018)
+                      : AppColors.brandSecondary,
                   borderRadius: BorderRadius.circular(99),
                 ),
                 child: Row(
@@ -121,7 +128,12 @@ class _OrderPreviewState extends State<OrderPreview> {
       children: [
         Text(
           key,
-          style: TextStyle(fontSize: 16, color: AppColors.textSecondary),
+          style: TextStyle(
+            fontSize: 16,
+            color: Get.find<ThemeController>().darkTheme
+                ? AppColors.darkTextSecondary
+                : AppColors.textSecondary,
+          ),
         ),
         Expanded(
           child: Text(

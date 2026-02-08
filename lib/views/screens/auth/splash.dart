@@ -55,7 +55,9 @@ class _SplashState extends State<Splash> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
-                        color: AppColors.textSecondary,
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
                       ),
                     )
                     .animate(delay: Duration(milliseconds: 1000))

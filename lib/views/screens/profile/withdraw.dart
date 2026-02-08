@@ -26,7 +26,11 @@ class Withdraw extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -38,7 +42,11 @@ class Withdraw extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       "Total earning, this month, clears in 7-14 days",
-                      style: TextStyle(color: AppColors.textSecondary),
+                      style: TextStyle(
+                        color: Get.find<ThemeController>().darkTheme
+                            ? AppColors.darkTextSecondary
+                            : AppColors.textSecondary,
+                      ),
                     ),
                     seperator(),
                     field(
@@ -56,7 +64,11 @@ class Withdraw extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(color: AppColors.borderDivider),
+                  border: Border.all(
+                    color: Get.find<ThemeController>().darkTheme
+                        ? AppColors.textSecondary
+                        : AppColors.borderDivider,
+                  ),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -89,14 +101,20 @@ class Withdraw extends StatelessWidget {
               const SizedBox(height: 12),
               Text(
                 "Withdrawals are processes within 2-5 busines days",
-                style: TextStyle(color: AppColors.textSecondary),
+                style: TextStyle(
+                  color: Get.find<ThemeController>().darkTheme
+                      ? AppColors.darkTextSecondary
+                      : AppColors.textSecondary,
+                ),
               ),
               const SizedBox(height: 20),
 
               Container(
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.brandSecondary,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_380018)
+                      : AppColors.brandSecondary,
                   borderRadius: BorderRadius.circular(99),
                 ),
                 child: Row(
@@ -172,7 +190,12 @@ class Withdraw extends StatelessWidget {
       children: [
         Text(
           key,
-          style: TextStyle(fontSize: nameSize, color: AppColors.textSecondary),
+          style: TextStyle(
+            fontSize: nameSize,
+            color: Get.find<ThemeController>().darkTheme
+                ? AppColors.darkTextSecondary
+                : AppColors.textSecondary,
+          ),
         ),
         Expanded(
           child: Text(

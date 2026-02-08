@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/app_icons.dart';
 import 'package:xandra/utils/app_texts.dart';
@@ -118,7 +120,9 @@ class SubscriptionWidget extends StatelessWidget {
                       Text(
                         e,
                         style: AppTexts.tmdm.copyWith(
-                          color: AppColors.brandSecondary,
+                          color: Get.find<ThemeController>().darkTheme
+                              ? Color(0xff_380018)
+                              : AppColors.brandSecondary,
                         ),
                       ),
                     ],
@@ -132,7 +136,9 @@ class SubscriptionWidget extends StatelessWidget {
                       Text(
                         e,
                         style: AppTexts.tmdm.copyWith(
-                          color: AppColors.brandSecondary,
+                          color: Get.find<ThemeController>().darkTheme
+                              ? Color(0xff_380018)
+                              : AppColors.brandSecondary,
                         ),
                       ),
                     ],

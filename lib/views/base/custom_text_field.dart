@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/app_icons.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +94,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     style: TextStyle(
                       fontFamily: "Roboto",
                       fontSize: 16,
-                      color: AppColors.textSecondary,
+                      color: Get.find<ThemeController>().darkTheme
+                          ? AppColors.darkTextSecondary
+                          : AppColors.textSecondary,
                       fontVariations: [FontVariation("wght", 500)],
                       height: 1.5,
                     ),
@@ -160,9 +164,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       isDense: true,
                       contentPadding: EdgeInsets.zero,
                       hintText: widget.hintText,
-                      hintStyle: TextStyle(
-                        color: AppColors.textDisabled,
-                      ),
+                      hintStyle: TextStyle(color: AppColors.textDisabled),
                     ),
                   ),
                 ),

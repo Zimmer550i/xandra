@@ -49,7 +49,9 @@ class _SignupState extends State<Signup> {
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 18,
-                  color: AppColors.textSecondary,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? AppColors.darkTextSecondary
+                      : AppColors.textSecondary,
                 ),
               ),
               const SizedBox(height: 44),
