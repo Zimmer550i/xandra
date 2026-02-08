@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_svg.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
 import 'package:xandra/views/base/custom_button.dart';
 import 'package:xandra/views/base/match_widget.dart';
+import 'package:xandra/views/screens/try_on/try_on.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -137,18 +139,23 @@ class ProductDetails extends StatelessWidget {
                     Row(
                       spacing: 8,
                       children: [
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Color(0xff_F6E4EB)),
+                        GestureDetector(
+                          onTap: () => Get.to(
+                            () => TryOn(tryOnType: TryOnType.tryOnProduct),
                           ),
-                          child: Center(
-                            child: CustomSvg(
-                              asset: "assets/icons/try_on.svg",
-                              color: AppColors.brandSecondary,
-                              size: 24,
+                          child: Container(
+                            width: 48,
+                            height: 48,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Color(0xff_F6E4EB)),
+                            ),
+                            child: Center(
+                              child: CustomSvg(
+                                asset: "assets/icons/try_on.svg",
+                                color: AppColors.brandSecondary,
+                                size: 24,
+                              ),
                             ),
                           ),
                         ),

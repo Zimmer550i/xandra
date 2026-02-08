@@ -82,7 +82,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
         });
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Row(
           spacing: 8,
           children: [

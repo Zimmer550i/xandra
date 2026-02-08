@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/views/base/custom_bottom_navbar.dart';
 import 'package:xandra/views/screens/cart/cart.dart';
 import 'package:xandra/views/screens/explore/explore.dart';
 import 'package:xandra/views/screens/home/home.dart';
 import 'package:xandra/views/screens/profile/profile.dart';
+import 'package:xandra/views/screens/try_on/try_on.dart';
 
 final GlobalKey<AppState> appKey = GlobalKey<AppState>();
 
@@ -47,7 +47,7 @@ class AppState extends State<App> {
               index: index,
               onChanged: (val) {
                 if (val == 1) {
-                  Get.find<ThemeController>().toggleTheme();
+                  Get.to(() => TryOn());
                   return;
                 }
                 setState(() {
