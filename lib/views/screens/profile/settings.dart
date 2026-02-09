@@ -25,7 +25,7 @@ class _SettingsState extends State<Settings> {
       assetName: "edit",
       page: AccountInformation(),
     ),
-    CliclableObject(title: "Dark Mode", assetName: "dark", page: DarkMode()),
+    CliclableObject(title: "Theme Mode", assetName: "dark", page: DarkMode()),
     CliclableObject(
       title: "Terms & Conditions",
       assetName: "terms",

@@ -38,11 +38,7 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               title: AppConstants.APP_NAME,
               debugShowCheckedModeBanner: false,
-              theme: light(),
-              darkTheme: dark(),
-              themeMode: themeController.darkTheme
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
+              theme: themeController.darkTheme ? dark() : light(),
               defaultTransition: Transition.cupertino,
               locale: localizeController.locale,
               translations: Messages(languages: languages),

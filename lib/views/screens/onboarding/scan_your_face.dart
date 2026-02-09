@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:get/get.dart';
 import 'package:xandra/controllers/theme_controller.dart';
 import 'package:xandra/utils/app_colors.dart';
@@ -6,11 +7,93 @@ import 'package:xandra/views/base/custom_button.dart';
 import 'package:xandra/views/screens/app.dart';
 import 'package:xandra/views/screens/onboarding/analyzing.dart';
 
-class ScanYourFace extends StatelessWidget {
+class ScanYourFace extends StatefulWidget {
   const ScanYourFace({super.key});
 
-  onSubmit() async {
-    Get.to(() => Analyzing());
+  @override
+  State<ScanYourFace> createState() => _ScanYourFaceState();
+}
+
+class _ScanYourFaceState extends State<ScanYourFace> {
+  CameraController? _controller;
+  bool _isDisposed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initCamera();
+    });
+  }
+
+  Future<void> _initCamera() async {
+    try {
+      final cameras = await availableCameras();
+      if (cameras.isEmpty) {
+        debugPrint('No cameras available');
+        return;
+      }
+
+      if (_isDisposed) return;
+
+      final camera = cameras.firstWhere(
+        (cam) => cam.lensDirection == CameraLensDirection.front,
+        orElse: () => cameras.first,
+      );
+
+      final controller = CameraController(
+        camera,
+        ResolutionPreset.medium,
+        enableAudio: false,
+        imageFormatGroup: ImageFormatGroup.jpeg,
+      );
+
+      await controller.initialize();
+
+      if (_isDisposed) {
+        await controller.dispose();
+        return;
+      }
+
+      controller.addListener(() {
+        if (_isDisposed) return;
+        if (controller.value.hasError) {
+          debugPrint('Camera error: ${controller.value.errorDescription}');
+        }
+      });
+
+      if (mounted) {
+        setState(() {
+          _controller = controller;
+        });
+      } else {
+        await controller.dispose();
+      }
+    } catch (e) {
+      debugPrint('Camera initialization error: $e');
+    }
+  }
+
+  Future<void> onSubmit() async {
+    final controller = _controller;
+    if (controller != null && controller.value.isInitialized) {
+      try {
+        await controller.takePicture();
+      } catch (e) {
+        debugPrint("Capture failed: $e");
+      }
+    }
+    if (mounted) {
+      Get.to(() => const Analyzing());
+    }
+  }
+
+  @override
+  void dispose() {
+    _isDisposed = true;
+    _controller?.dispose();
+    _controller = null;
+    super.dispose();
   }
 
   @override
@@ -21,12 +104,7 @@ class ScanYourFace extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    "assets/images/scanner.png",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                Positioned.fill(child: _cameraViewport()),
                 Positioned(
                   top: 10,
                   left: 0,
@@ -118,6 +196,31 @@ class ScanYourFace extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _cameraViewport() {
+    final controller = _controller;
+    if (controller == null || !controller.value.isInitialized) {
+      return Container(color: Colors.black);
+    }
+
+    return Stack(
+      children: [
+        Positioned(
+          top: 0,
+          bottom: 0,
+          child: CameraPreview(controller)),
+        Positioned.fill(
+          child: Container(
+            margin: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

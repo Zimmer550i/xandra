@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xandra/controllers/theme_controller.dart';
+import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/views/base/custom_app_bar.dart';
+import 'package:xandra/views/base/custom_button.dart';
 import 'package:xandra/views/base/custom_checkbox.dart';
+import 'package:xandra/views/screens/auth/splash.dart';
 
 class DarkMode extends StatefulWidget {
   const DarkMode({super.key});
@@ -20,6 +23,10 @@ class _DarkModeState extends State<DarkMode> {
     darkMode = Get.find<ThemeController>().darkTheme ? 0 : 1;
   }
 
+  onSubmit() async {
+    Get.offAll(() => Splash(), transition: Transition.fadeIn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +35,21 @@ class _DarkModeState extends State<DarkMode> {
         padding: const EdgeInsets.all(20),
         child: Column(
           spacing: 12,
-          children: [options("Enabled", 0), options("Disabled", 1)],
+          children: [
+            options("Dark Mode", 0),
+            options("Light Mode", 1),
+            const SizedBox(height: 12),
+            CustomButton(onTap: onSubmit, text: "Apply"),
+            Text(
+              "The app will be restarted when new theme mode is applied",
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Get.find<ThemeController>().darkTheme
+                    ? AppColors.offWhite
+                    : Color(0xff_727272),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -37,16 +58,9 @@ class _DarkModeState extends State<DarkMode> {
   Widget options(String title, int pos) {
     return GestureDetector(
       onTap: () {
-        darkMode = pos;
-        Get.find<ThemeController>().toggleTheme();
-        // Get.offAll(
-        //   () => App(key: appKey),
-        //   routeName: "/app",
-        //   transition: Transition.noTransition,
-        // );
-        // appKey.currentState?.setIndex(4);
-        // Get.to(() => Settings(), transition: Transition.noTransition);
-        // Get.to(() => DarkMode(), transition: Transition.noTransition);
+        setState(() {
+          darkMode = pos;
+        });
       },
       child: Obx(
         () => Container(
