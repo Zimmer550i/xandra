@@ -3,10 +3,8 @@ import 'package:video_player/video_player.dart';
 import 'package:xandra/utils/app_colors.dart';
 import 'package:xandra/utils/custom_flick_landscape_controls.dart';
 import 'package:xandra/utils/custom_flick_portrait_controls.dart';
-import 'package:xandra/utils/custom_svg.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class VideoWidget extends StatefulWidget {
   final String url;
@@ -113,28 +111,6 @@ class _VideoWidgetState extends State<VideoWidget> {
                     child: Text(_controller.value.errorDescription ?? ""),
                   ),
                 ],
-              ),
-            ),
-            Positioned(
-              top: 12,
-              left: 20,
-              child: FlickAutoHideChild(
-                child: GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      color: Color(0xff1b1b1b).withAlpha(128),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: CustomSvg(asset: "assets/icons/back.svg"),
-                    ),
-                  ),
-                ),
               ),
             ),
           ],

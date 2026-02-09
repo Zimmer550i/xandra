@@ -13,6 +13,7 @@ class Home extends StatelessWidget {
           Positioned.fill(
             child: PageView.builder(
               scrollDirection: Axis.vertical,
+              itemCount: AppConstants.videos.length,
               itemBuilder: (context, index) {
                 return Stack(
                   children: [
@@ -21,7 +22,6 @@ class Home extends StatelessWidget {
                         AppConstants.videos[index]['sources'].first,
                       ),
                     ),
-                    // VideoOverlay(),
                   ],
                 );
               },

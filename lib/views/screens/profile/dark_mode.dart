@@ -24,6 +24,9 @@ class _DarkModeState extends State<DarkMode> {
   }
 
   onSubmit() async {
+    if ((darkMode == 0) != Get.find<ThemeController>().darkTheme) {
+      Get.find<ThemeController>().toggleTheme();
+    }
     Get.offAll(() => Splash(), transition: Transition.fadeIn);
   }
 
