@@ -41,18 +41,6 @@ class CustomFlickPortraitControls extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          top: 0,
-          right: 20,
-          child: SafeArea(
-            child: actionButton(
-              context,
-              "creator",
-              0,
-              () => Get.to(() => UploadInformation()),
-            ),
-          ),
-        ),
         Positioned.fill(
           child: SafeArea(
             child: Padding(
@@ -163,13 +151,27 @@ class CustomFlickPortraitControls extends StatelessWidget {
                       color: AppColors.brandPrimary,
                       padding: EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).textTheme.titleMedium?.color?.withAlpha(128),
+                        color: Theme.of(
+                          context,
+                        ).textTheme.titleMedium?.color?.withAlpha(128),
                         borderRadius: BorderRadius.circular(40),
                       ),
                     ),
                   ),
                 ),
               ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 0,
+          right: 20,
+          child: SafeArea(
+            child: actionButton(
+              context,
+              "creator",
+              0,
+              () => Get.to(() => UploadInformation()),
             ),
           ),
         ),
