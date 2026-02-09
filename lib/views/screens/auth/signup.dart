@@ -115,7 +115,6 @@ class _SignupState extends State<Signup> {
                             style: TextStyle(color: AppColors.brandPrimary),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Get.find<ThemeController>().toggleTheme();
                               },
                           ),
                           TextSpan(text: " and "),

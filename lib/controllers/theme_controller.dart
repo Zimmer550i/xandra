@@ -12,15 +12,14 @@ class ThemeController extends GetxController implements GetxService {
     _loadCurrentTheme();
   }
 
-  bool _darkTheme = true;
+  final RxBool _darkTheme = RxBool(true);
 
-
-  bool get darkTheme => _darkTheme;
-
+  bool get darkTheme => _darkTheme.value;
 
   void toggleTheme() {
-    _darkTheme = !_darkTheme;
-    sharedPreferences.setBool(AppConstants.THEME, _darkTheme);
+    _darkTheme.value = !_darkTheme.value;
+    Get.changeThemeMode(_darkTheme.value ? ThemeMode.dark : ThemeMode.light);
+    sharedPreferences.setBool(AppConstants.THEME, _darkTheme.value);
     update();
   }
 
@@ -29,7 +28,7 @@ class ThemeController extends GetxController implements GetxService {
   }
 
   void _loadCurrentTheme() async {
-    _darkTheme = sharedPreferences.getBool(AppConstants.THEME) ?? false;
+    _darkTheme.value = sharedPreferences.getBool(AppConstants.THEME) ?? false;
     update();
   }
 }

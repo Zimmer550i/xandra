@@ -6,7 +6,7 @@ import 'package:xandra/utils/message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:xandra/views/screens/app.dart';
+import 'package:xandra/views/screens/auth/splash.dart';
 import 'controllers/localization_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'helpers/di.dart' as di;
@@ -38,7 +38,11 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               title: AppConstants.APP_NAME,
               debugShowCheckedModeBanner: false,
-              theme: themeController.darkTheme ? dark() : light(),
+              theme: light(),
+              darkTheme: dark(),
+              themeMode: themeController.darkTheme
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
               defaultTransition: Transition.cupertino,
               locale: localizeController.locale,
               translations: Messages(languages: languages),
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
               transitionDuration: const Duration(milliseconds: 500),
               getPages: AppRoutes.pages,
               // initialRoute: AppRoutes.splash,
-              home: App(),
+              home: Splash(),
             );
           },
         );

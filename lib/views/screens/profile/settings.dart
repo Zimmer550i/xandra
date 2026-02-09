@@ -8,6 +8,7 @@ import 'package:xandra/views/base/custom_app_bar.dart';
 import 'package:xandra/views/base/overlay_confirmation.dart';
 import 'package:xandra/views/screens/auth/splash.dart';
 import 'package:xandra/views/screens/profile/account_information.dart';
+import 'package:xandra/views/screens/profile/dark_mode.dart';
 import 'package:xandra/views/screens/profile/info.dart';
 
 class Settings extends StatefulWidget {
@@ -24,6 +25,7 @@ class _SettingsState extends State<Settings> {
       assetName: "edit",
       page: AccountInformation(),
     ),
+    CliclableObject(title: "Dark Mode", assetName: "dark", page: DarkMode()),
     CliclableObject(
       title: "Terms & Conditions",
       assetName: "terms",

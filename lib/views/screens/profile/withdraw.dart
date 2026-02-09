@@ -161,7 +161,6 @@ class Withdraw extends StatelessWidget {
                       ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Get.find<ThemeController>().toggleTheme();
                         },
                     ),
                   ],
