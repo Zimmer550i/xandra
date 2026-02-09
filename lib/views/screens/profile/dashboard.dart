@@ -24,7 +24,9 @@ class Dashboard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0d0d0d)
+                      : Colors.white,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
                         ? AppColors.textSecondary
@@ -77,7 +79,12 @@ class Dashboard extends StatelessWidget {
                               spacing: 8,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CustomSvg(asset: "assets/icons/views.svg"),
+                                CustomSvg(
+                                  asset: "assets/icons/views.svg",
+                                  color: Get.find<ThemeController>().darkTheme
+                                      ? AppColors.textSecondary
+                                      : null,
+                                ),
                                 Text("Views"),
                                 Text(
                                   "2300",
@@ -112,7 +119,12 @@ class Dashboard extends StatelessWidget {
                               spacing: 8,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CustomSvg(asset: "assets/icons/sales.svg"),
+                                CustomSvg(
+                                  asset: "assets/icons/sales.svg",
+                                  color: Get.find<ThemeController>().darkTheme
+                                      ? AppColors.textSecondary
+                                      : null,
+                                ),
                                 Text("Sales"),
                                 Text(
                                   "\$2500",
@@ -153,7 +165,12 @@ class Dashboard extends StatelessWidget {
                           Row(
                             spacing: 8,
                             children: [
-                              CustomSvg(asset: "assets/icons/commision.svg"),
+                              CustomSvg(
+                                asset: "assets/icons/commision.svg",
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? AppColors.textSecondary
+                                    : null,
+                              ),
                               Text("Commission earned"),
                             ],
                           ),
@@ -199,7 +216,9 @@ class Dashboard extends StatelessWidget {
                               children: [
                                 CustomSvg(
                                   asset: "assets/icons/history.svg",
-                                  color: AppColors.textPrimary,
+                                  color: Get.find<ThemeController>().darkTheme
+                                      ? AppColors.textSecondary
+                                      : AppColors.textPrimary,
                                 ),
                                 Text("See Withdraw History"),
                               ],

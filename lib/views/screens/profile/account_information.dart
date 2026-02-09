@@ -27,7 +27,7 @@ class AccountInformation extends StatelessWidget {
                       : AppColors.cardBackground,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
-                        ? AppColors.textSecondary
+                        ? Color(0xff_2D2924)
                         : AppColors.borderDivider,
                   ),
                   borderRadius: BorderRadius.circular(12),
@@ -69,7 +69,9 @@ class AccountInformation extends StatelessWidget {
                               CustomSvg(
                                 asset: "assets/icons/edit.svg",
                                 size: 14,
-                                color: AppColors.textPrimary,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? AppColors.darkText
+                                    : AppColors.textPrimary,
                               ),
                               Text("Edit"),
                             ],
@@ -139,7 +141,9 @@ class AccountInformation extends StatelessWidget {
                               CustomSvg(
                                 asset: "assets/icons/edit.svg",
                                 size: 14,
-                                color: AppColors.textPrimary,
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? AppColors.darkText
+                                    : AppColors.textPrimary,
                               ),
                               Text("Edit"),
                             ],
@@ -162,7 +166,9 @@ class AccountInformation extends StatelessWidget {
       margin: EdgeInsets.only(top: 12, bottom: 12),
       height: 1,
       width: double.infinity,
-      color: Color(0xff_F4ECE9),
+      color: Get.find<ThemeController>().darkTheme
+          ? Color(0xff_2D2924)
+          : Color(0xff_F4ECE9),
     );
   }
 }

@@ -25,7 +25,9 @@ class Withdraw extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0D0D0D)
+                      : Colors.white,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
                         ? AppColors.textSecondary
@@ -63,7 +65,9 @@ class Withdraw extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? Color(0xff_0D0D0D)
+                      : Colors.white,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
                         ? AppColors.textSecondary

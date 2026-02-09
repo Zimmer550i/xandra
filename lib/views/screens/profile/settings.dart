@@ -52,7 +52,7 @@ class _SettingsState extends State<Settings> {
                       : AppColors.cardBackground,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
-                        ? AppColors.textSecondary
+                        ? Color(0xff_2D2924)
                         : AppColors.borderDivider,
                   ),
                   borderRadius: BorderRadius.circular(12),
@@ -65,7 +65,12 @@ class _SettingsState extends State<Settings> {
                         horizontal: 8.0,
                         vertical: 16,
                       ),
-                      child: Container(height: 1, color: Color(0xff_f5f5f5)),
+                      child: Container(
+                        height: 1,
+                        color: Get.find<ThemeController>().darkTheme
+                            ? Color(0xff_171717)
+                            : Color(0xff_f5f5f5),
+                      ),
                     );
                   },
                   itemCount: menuOptions.length,
@@ -106,13 +111,18 @@ class _SettingsState extends State<Settings> {
                             height: 48,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: Color(0xff_F6E4EB)),
+                              border: Border.all(
+                                color: Get.find<ThemeController>().darkTheme
+                                    ? Color(0xff_2E0F1B)
+                                    : Color(0xff_F6E4EB),
+                              ),
                             ),
                             child: Center(
                               child: CustomSvg(
                                 asset: "assets/icons/${item.assetName}.svg",
                                 color: Get.find<ThemeController>().darkTheme
-                                    ? Color(0xff_380018)
+                                    ? AppColors.brandPrimary
+                                    // ? Color(0xff_380018)
                                     : AppColors.brandSecondary,
                                 size: 24,
                               ),

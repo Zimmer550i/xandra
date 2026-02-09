@@ -86,7 +86,12 @@ class SavedVideosCard extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {},
-                child: Icon(Icons.close, color: AppColors.textPrimary),
+                child: Icon(
+                  Icons.close,
+                  color: Get.find<ThemeController>().darkTheme
+                      ? AppColors.textSecondary
+                      : AppColors.textPrimary,
+                ),
               ),
               const SizedBox(height: 32),
               isSaved

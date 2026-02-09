@@ -28,7 +28,7 @@ class AppColors {
 
   // Dark Mode Colors
   static const Color darkBackground = Color(0xFF0F0F12);
-  static const Color darkCard = Color(0xFF1C1C1E);
+  static const Color darkCard = Color(0xFF131313);
   static const Color darkText = Color(0xFFe1e1e3);
   static const Color darkTextSecondary = Color(0xFFB3B3B8);
 }

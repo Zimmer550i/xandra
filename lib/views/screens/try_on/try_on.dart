@@ -115,7 +115,7 @@ class _TryOnState extends State<TryOn> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Get.find<ThemeController>().darkTheme
-                                ? AppColors.darkCard
+                                ? AppColors.darkBackground
                                 : AppColors.cardBackground,
                             borderRadius: BorderRadius.vertical(
                               top: Radius.elliptical(16, 16),
@@ -133,7 +133,7 @@ class _TryOnState extends State<TryOn> {
             padding: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
             decoration: BoxDecoration(
               color: Get.find<ThemeController>().darkTheme
-                  ? AppColors.darkCard
+                  ? AppColors.darkBackground
                   : AppColors.cardBackground,
             ),
             child: SafeArea(

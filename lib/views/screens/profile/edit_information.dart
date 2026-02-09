@@ -41,7 +41,7 @@ class _EditInformationState extends State<EditInformation> {
                       : AppColors.cardBackground,
                   border: Border.all(
                     color: Get.find<ThemeController>().darkTheme
-                        ? AppColors.textSecondary
+                        ? Color(0xff_2D2924)
                         : AppColors.borderDivider,
                   ),
                   borderRadius: BorderRadius.circular(12),
